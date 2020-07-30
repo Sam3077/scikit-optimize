@@ -301,9 +301,8 @@ class Optimizer(object):
         random_state : int, RandomState instance, or None (default)
             Set the random state of the copy.
         """
-
         optimizer = Optimizer(
-            dimensions=self.space.dimensions,
+            dimensions=self.space.config_space if self.space.config_space != None else self.space.dimensions,
             base_estimator=self.base_estimator_,
             n_initial_points=self.n_initial_points_,
             initial_point_generator=self._initial_point_generator,
